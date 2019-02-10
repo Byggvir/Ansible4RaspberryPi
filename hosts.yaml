@@ -1,26 +1,28 @@
 ---
+# My Raspberry Pi and other Debian hosts
 all:
     children:
         pi:
             children:
                 cluster:
+                    # Cluster of 4 Pi
                     hosts:
                         cpi[0:3].arend.tksd:
                 other:
                     hosts:
-                        pi1.arend.tksd:
-                        pisvr.arend.tksd:
-                        pi-e.dyn.byggvir.de:
+                        pi1.arend.tksd:         # Pi Server 1
+                        pisvr.arend.tksd:       # Pi Server 2 with 2 TB
+                        pi-e.dyn.byggvir.de:    # Pi in Gemeindezentrum
             vars:
                 ansible_user: pi
         vserver:
             hosts:
-                byggvir.de:
+                byggvir.de:     # Not a Pi but ...
             vars:
                 ansible_user: thomas
         pc:
             hosts:
-                dt-thomas.arend.tksd:
-                lt-thomas.arend.tksd:
+                dt-thomas.arend.tksd:   # My desktop
+                lt-thomas.arend.tksd:   # My laptop
             vars:
                 ansible_user: thomas
