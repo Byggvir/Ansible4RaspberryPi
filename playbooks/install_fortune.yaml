@@ -1,0 +1,10 @@
+---
+- hosts: pi
+  remote_user: pi
+  tasks:
+    - name: apt install "fortune" package
+      become: yes
+      apt:
+        name: fortune
+        update_cache: no
+

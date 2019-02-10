@@ -1,0 +1,26 @@
+---
+all:
+    children:
+        pi:
+            children:
+                cluster:
+                    hosts:
+                        cpi[0:3].arend.tksd:
+                other:
+                    hosts:
+                        pi1.arend.tksd:
+                        pisvr.arend.tksd:
+                        pi-e.dyn.byggvir.de:
+            vars:
+                ansible_user: pi
+        vserver:
+            hosts:
+                byggvir.de:
+            vars:
+                ansible_user: thomas
+        pc:
+            hosts:
+                dt-thomas.arend.tksd:
+                lt-thomas.arend.tksd:
+            vars:
+                ansible_user: thomas

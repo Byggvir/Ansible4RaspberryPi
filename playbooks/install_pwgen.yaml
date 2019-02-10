@@ -1,0 +1,9 @@
+---
+- hosts: all
+  tasks:
+    - name: apt install "pwgen" package
+      become: yes
+      apt:
+        name: pwgen
+        update_cache: yes
+
