@@ -1,0 +1,8 @@
+---
+# Upatde with apt / apt-get
+
+- name: apt install "aptitude" package
+  become: yes
+  apt:
+    name: aptitude
+    update_cache: yes
