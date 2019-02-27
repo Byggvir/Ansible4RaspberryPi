@@ -26,3 +26,7 @@ all:
                 lt-thomas.arend.tksd:   # My laptop
             vars:
                 ansible_user: thomas
+        gateways:
+            hosts:
+                pi1.arend.tksd:
+                pi-e.dyn.byggvir.de:

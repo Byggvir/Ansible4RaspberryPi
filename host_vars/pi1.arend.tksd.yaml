@@ -1,0 +1,8 @@
+gre:
+    tunnel:
+        remote: 192.168.178.23
+        local:  192.168.2.3
+        ttl:    10
+    dev: GRE-Tunnel
+    addr: 10.0.100.1
+    network: 10.0.100.0/24

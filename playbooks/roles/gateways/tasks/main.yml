@@ -1,0 +1,8 @@
+# GRE Tunnel 
+- name: Copy startup template
+  template:
+    src: start-gre-tunnel.j2
+    dest: /home/pi/bin/start-gre-tunnel.sh
+    owner: pi
+    group: pi
+    mode: 0744
