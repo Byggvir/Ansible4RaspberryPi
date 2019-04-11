@@ -1,5 +1,7 @@
 # GRE Tunnel configuration
 
+# Template to configure one GRE tunnel in /etc/network/interfaces.d/{{ gre[item].dev }}.conf
+
 auto {{ gre[item].dev }}
 
 iface {{ gre[item].dev }} inet tunnel
@@ -9,11 +11,12 @@ iface {{ gre[item].dev }} inet tunnel
   dstaddr {{ gre[item].daddress }}
   local {{ gre[item].tunnel.local }}
   endpoint {{ gre[item].tunnel.remote }} 
-  ttl 64
-  post-up ip route add {{ gre[item].network }} dev {{ gre[item].dev }}
-  post-down ip tunnel del {{ gre[item].dev }}
+  mtu {{ gre[item].tunnel.mtu }}
+  ttl {{ gre[item].tunnel.ttl }}
+  post-up ip route add {{ gre[item].network }} dev $IFACE
+  post-down ip tunnel del $IFACE
+
 {% if gre[item].inet6 is defined %}
 iface {{ gre[item].dev }} inet6 static
   address {{ gre[item].inet6 }}
 {% endif %}
-
