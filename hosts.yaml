@@ -12,12 +12,12 @@ all:
                     hosts:
                         pi1.arend.tksd:         # Pi Server 1
                         pisvr.arend.tksd:       # Pi Server 2 with 2 TB
-                        pi-e.dyn.byggvir.de:    # Pi in Gemeindezentrum
+                        pi-e.dyn.byggvir.de:    # Pi im Gemeindezentrum
             vars:
                 ansible_user: pi
         vserver:
             hosts:
-                byggvir.de:     # Not a Pi but ...
+                byggvir.de: # Not a Pi but ...
             vars:
                 ansible_user: thomas
         pc:

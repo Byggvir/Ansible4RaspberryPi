@@ -1,2 +1,2 @@
 ---
-remote_user: pi
+ansible_user: pi

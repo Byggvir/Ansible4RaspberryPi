@@ -1,0 +1,13 @@
+# test/tasks/main.yaml
+
+#- name: Example task for role
+#  debug:
+#    msg: "Example task of role test"
+- name: Loop test
+  template:
+    src: 'test.j2'
+    dest: '/tmp/{{ item }}.conf'
+  loop: "{{ gre | list }}"
+        
+
+

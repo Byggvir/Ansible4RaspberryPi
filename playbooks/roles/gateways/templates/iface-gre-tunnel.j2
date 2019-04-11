@@ -1,18 +1,15 @@
 # GRE Tunnel configuration
 
-auto swp1 #underlay interface for tunnel
-
-iface swp1
-    link-speed 10000
-    link-duplex full
-    link-autoneg off
-    address {{ gre.local_addr }}
- 
 auto {{ gre.dev }}
 
-iface {{ gre.dev }} inet static
-    address {{ gre.addr }}
-    pre-up ip tunnel add {{ gre.dev }} mode gre remote {{ gre.tunnel.remote_addr }} local {{ gre.tunnl.local_addr }}  ttl {{ gre.tunnel.ttl }}
-    post-up ip route add {{ gre.remotenet }} dev{{ gre.dev }}
-    post-down ip tunnel del {{ gre.dev }}
+iface {{ gre.dev }} inet tunnel
+  mode gre
+  netmask {{ gre.tunnel.netmask }}
+  address {{ gre.address }}
+  dstaddr {{ gre.daddress }}
+  local {{ gre.tunnel.local }}
+  endpoint {{ gre.tunnel.remote }} 
+  ttl 64
+  post-up ip route add {{ gre.network }} dev {{ gre.dev }}
+  post-down ip tunnel del {{ gre.dev }}
  

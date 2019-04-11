@@ -1,6 +1,6 @@
 ---
 - hosts: pi
-  remote_user: pi
+  ansible_user: pi
   tasks:
     - name: apt install "fortune" package
       become: yes

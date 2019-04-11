@@ -1,8 +1,12 @@
 gre:
+  ekir:
     tunnel:
         remote: 192.168.2.3
-        local:  192.168.178.23
-        ttl:    10
+        local:  '{{ ansible_default_ipv4.address }}'
+        netmask: 255.255.255.254
+        ttl:    64
     dev: GRE-Tunnel
-    addr: 10.0.100.2
-    network: 10.0.100.0/24 
+    address: 10.0.100.2
+    daddress: 10.0.100.1
+    network: 10.0.100.0/24
+

@@ -1,0 +1,19 @@
+# GRE Tunnel configuration
+
+auto {{ gre[item].dev }}
+
+iface {{ gre[item].dev }} inet tunnel
+  mode gre
+  netmask {{ gre[item].tunnel.netmask }}
+  address {{ gre[item].address }}
+  dstaddr {{ gre[item].daddress }}
+  local {{ gre[item].tunnel.local }}
+  endpoint {{ gre[item].tunnel.remote }} 
+  ttl 64
+  post-up ip route add {{ gre[item].network }} dev {{ gre[item].dev }}
+  post-down ip tunnel del {{ gre[item].dev }}
+{% if gre[item].inet6 is defined %}
+iface {{ gre[item].dev }} inet6 static
+  address {{ gre[item].inet6 }}
+{% endif %}
+

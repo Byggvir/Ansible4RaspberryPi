@@ -1,8 +1,8 @@
 ---
-- name: Install the gateways
+- name: Install GRE tunnels
   hosts: gateways
   gather_facts: true
   become: true
   tasks:
     - include_role:
-        name: gateways
+        name: test

@@ -1,8 +1,17 @@
 # GRE Tunnel 
-- name: Copy startup template
+
+- name: Install GRE Tunnel start script
   template:
     src: start-gre-tunnel.j2
     dest: /home/pi/bin/start-gre-tunnel.sh
     owner: pi
     group: pi
     mode: 0744
+
+- name: Install GRE Tunnel interface
+  template:
+    src: iface-gre-tunnel.j2
+    dest: /etc/network/interfaces.d/gre-tunnel.conf
+    owner: root
+    group: root
+    mode: 0644
