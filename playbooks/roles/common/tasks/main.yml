@@ -1,4 +1,0 @@
- 
-- name: Empty
-  debug:
-    msg: "Emtpy tasks"

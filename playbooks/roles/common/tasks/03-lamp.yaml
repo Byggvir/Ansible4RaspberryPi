@@ -1,16 +1,6 @@
 ---
 # Upatde with apt / apt-get
 
-- name: apt install initial packages
-  become: yes
-  apt:
-    name: 
-        - findutils
-        - fortune
-        - pwgen
-        - sudo
-        - vim
-    update_cache: yes
 - name: apt install apache2 and php7
   become: yes
   apt:
@@ -26,7 +16,15 @@
         - php-cli
         - imagemagick
     update_cache: no
-- name: apt install dns mysql and mail
+
+- name: apt install mysql
+  become: yes
+  apt:
+    name: 
+        - mariadb-server
+    update_cache: no
+
+- name: apt install dns
   become: yes
   apt:
     name: 
@@ -34,7 +32,12 @@
         - dnsutils
         - resolvconf
         - certbot
-        - mariadb-server
+    update_cache: no
+
+- name: apt install mail
+  become: yes
+  apt:
+    name: 
         - dovecot-core
         - dovecot-pop3d
         - dovecot-antispam

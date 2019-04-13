@@ -4,14 +4,16 @@
 
 # Create temprary directory for testing Ansible
 
-- file:
+- name: Create /etc/network
+  file:
     path: /tmp/etc/network
     state: directory
     mode: 0755
 
 # Create directory for interfaces
 
-- file:
+- name: Create /etc/network/interfaces.d
+  file:
     path: /tmp/etc/network/interfaces.d
     state: directory
     mode: 0755

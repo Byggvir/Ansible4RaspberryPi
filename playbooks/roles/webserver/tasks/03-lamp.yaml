@@ -1,0 +1,54 @@
+---
+# Upatde with apt / apt-get
+
+- name: apt install apache2 and php7
+  become: yes
+  apt:
+    name: 
+        - apache2-utils
+        - libapache2-mod-php7.0
+        - libapache2-mod-proxy-uwsgi
+        - php7.0
+        - php7.0-mysql
+        - php-xml
+        - php-mbstring
+        - php-intl
+        - php-cli
+        - imagemagick
+    update_cache: no
+
+- name: apt install mysql
+  become: yes
+  apt:
+    name: 
+        - mariadb-server
+    update_cache: no
+
+- name: apt install dns
+  become: yes
+  apt:
+    name: 
+        - unbound
+        - dnsutils
+        - resolvconf
+        - certbot
+    update_cache: no
+
+- name: apt install mail
+  become: yes
+  apt:
+    name: 
+        - dovecot-core
+        - dovecot-pop3d
+        - dovecot-antispam
+        - dovecot-managesieved
+        - dovecot-sieve
+        - dovecot-mysql
+        - dovecot-imapd
+        - dovecot-lmtpd
+        - postfix
+        - postfix-mysql
+        - redis-server
+        - cyrus-sasl2-doc
+        - libsasl2-modules
+    update_cache: no
