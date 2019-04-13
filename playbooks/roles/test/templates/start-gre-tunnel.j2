@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Script to start GRE tunnel
+# Requires super power
+
+	ip tunnel add {{ gre[item].dev }} \
+	   mode gre \
+	   remote {{ gre[item].tunnel.remote }} \
+	   local {{ gre[item].tunnel.local }} \
+ 	   ttl {{ gre[item].tunnel.ttl }}
+	ip link set {{ gre[item].dev }} up
+	ip addr add {{ gre[item].address }} dev {{ gre[item].dev }}
+	ip route add {{ gre[item].network }} dev {{ gre[item].dev }}
+
