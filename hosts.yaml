@@ -10,9 +10,9 @@ all:
                         cpi[0:3].arend.tksd:
                 other:
                     hosts:
-                        pi1.arend.tksd:         # Pi Server 1
-                        pisvr.arend.tksd:       # Pi Server 2 with 2 TB
+                        pi1.dyn.byggvir.de:     # Pi Server 1
                         pi-e.dyn.byggvir.de:    # Pi im Gemeindezentrum
+                        pisvr.arend.tksd:       # Pi Server 2 with 2 TB
             vars:
                 ansible_user: pi
         vserver:
@@ -28,5 +28,6 @@ all:
                 ansible_user: thomas
         gateways:
             hosts:
-                pi1.arend.tksd:
+                pi1.dyn.byggvir.de:
                 pi-e.dyn.byggvir.de:
+                cpi[0:3].arend.tksd:

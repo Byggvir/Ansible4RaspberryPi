@@ -1,6 +1,0 @@
----
-- hosts: all
-  tasks:
-    - include_tasks: tasks/install-aptitude.yaml
-      tags: install
-

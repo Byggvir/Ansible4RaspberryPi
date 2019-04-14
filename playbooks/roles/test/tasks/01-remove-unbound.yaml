@@ -1,0 +1,7 @@
+---
+- name: apt remove unbound
+  become: yes
+  apt:
+    name: unbound
+    state: absent
+...

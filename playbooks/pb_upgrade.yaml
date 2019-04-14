@@ -2,5 +2,5 @@
 - hosts: all
   gather_facts: false
   tasks:
-    - include_tasks: tasks/apt-upgrade.yaml
+    - include_tasks: roles/common/tasks/01-upgrade.yaml
       tags: update

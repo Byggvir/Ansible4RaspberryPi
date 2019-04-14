@@ -1,0 +1,7 @@
+# supernode/tasks/main.yaml
+
+# Configure LAN Interfaces in /etc/network/interfaces.conf
+
+# Create temprary directory for testing Ansible
+
+- include_tasks: 01-remove-unbound.yaml
