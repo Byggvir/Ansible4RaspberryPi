@@ -1,0 +1,6 @@
+---
+- name: apt remove unbound
+  template: 
+    src: loop.j2
+    dest: /tmp/loop.txt
+...
