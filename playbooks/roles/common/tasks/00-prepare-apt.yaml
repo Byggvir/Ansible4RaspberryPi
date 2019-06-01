@@ -1,0 +1,23 @@
+---
+# Update with apt / apt-get
+
+- name: Make this server ansible compatible
+  raw: "apt-get install aptitude lsb-release apt-transport-https ca-certificates python dirmngr -y"
+
+- name: Adding php key
+  apt_key:
+    id: B188E2B695BD4743
+    url: https://packages.sury.org/php/apt.gpg
+    state: present
+
+- name: Add php repo
+  apt_repository: 
+    repo: 'deb https://packages.sury.org/php/ stretch main' 
+    state: present
+
+- name: Update and upgrade apt packages
+  become: yes
+  apt:
+    upgrade: yes
+    update_cache: yes
+    cache_valid_time: 86400 # One day 

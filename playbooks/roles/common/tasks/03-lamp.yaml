@@ -1,20 +1,133 @@
 ---
 # Upatde with apt / apt-get
 
-- name: apt install apache2 and php7
+- name: apt remove old php{{ item }}
+  become: yes
+  apt:
+    name: 
+        - libapache2-mod-php{{ item }}
+        - php{{ item }}
+        - php{{ item }}-bcmath
+        - php{{ item }}-bcmath-dbgsym
+        - php{{ item }}-bz2
+        - php{{ item }}-bz2-dbgsym
+        - php{{ item }}-cgi
+        - php{{ item }}-cgi-dbgsym
+        - php{{ item }}-cli
+        - php{{ item }}-cli-dbgsym
+        - php{{ item }}-common
+        - php{{ item }}-common-dbgsym
+        - php{{ item }}-curl
+        - php{{ item }}-curl-dbgsym
+        - php{{ item }}-dba
+        - php{{ item }}-dba-dbgsym
+        - php{{ item }}-dev
+        - php{{ item }}-enchant
+        - php{{ item }}-enchant-dbgsym
+        - php{{ item }}-fpm
+        - php{{ item }}-fpm-dbgsym
+        - php{{ item }}-gd
+        - php{{ item }}-gd-dbgsym
+        - php{{ item }}-gmp
+        - php{{ item }}-gmp-dbgsym
+        - php{{ item }}-imap
+        - php{{ item }}-imap-dbgsym
+        - php{{ item }}-interbase
+        - php{{ item }}-interbase-dbgsym
+        - php{{ item }}-intl
+        - php{{ item }}-intl-dbgsym
+        - php{{ item }}-json
+        - php{{ item }}-json-dbgsym
+        - php{{ item }}-ldap
+        - php{{ item }}-ldap-dbgsym
+        - php{{ item }}-mbstring
+        - php{{ item }}-mbstring-dbgsym
+        - php{{ item }}-mcrypt
+        - php{{ item }}-mcrypt-dbgsym
+        - php{{ item }}-mysql
+        - php{{ item }}-mysql-dbgsym
+        - php{{ item }}-odbc
+        - php{{ item }}-odbc-dbgsym
+        - php{{ item }}-opcache
+        - php{{ item }}-opcache-dbgsym
+        - php{{ item }}-pgsql
+        - php{{ item }}-pgsql-dbgsym
+        - php{{ item }}-phpdbg
+        - php{{ item }}-phpdbg-dbgsym
+        - php{{ item }}-pspell
+        - php{{ item }}-pspell-dbgsym
+        - php{{ item }}-readline
+        - php{{ item }}-readline-dbgsym
+        - php{{ item }}-recode
+        - php{{ item }}-recode-dbgsym
+        - php{{ item }}-snmp
+        - php{{ item }}-snmp-dbgsym
+        - php{{ item }}-soap
+        - php{{ item }}-soap-dbgsym
+        - php{{ item }}-sqlite3
+        - php{{ item }}-sqlite3-dbgsym
+        - php{{ item }}-sybase
+        - php{{ item }}-sybase-dbgsym
+        - php{{ item }}-tidy
+        - php{{ item }}-tidy-dbgsym
+        - php{{ item }}-xml
+        - php{{ item }}-xml-dbgsym
+        - php{{ item }}-xmlrpc
+        - php{{ item }}-xmlrpc-dbgsym
+        - php{{ item }}-xsl
+        - php{{ item }}-zip
+        - php{{ item }}-zip-dbgsym
+    state: absent
+    update_cache: no
+  loop:
+    - 7.3
+    - 5.6
+    
+- name: apt install apache2 and php7.2
   become: yes
   apt:
     name: 
         - apache2-utils
-        - libapache2-mod-php7.0
+        - libapache2-mod-php7.2
         - libapache2-mod-proxy-uwsgi
-        - php7.0
-        - php7.0-mysql
-        - php-xml
-        - php-mbstring
-        - php-intl
-        - php-cli
+        - php7.2
+        - php7.2-bcmath
+        - php7.2-bz2
+        - php7.2-cgi
+        - php7.2-cli
+        - php7.2-common
+        - php7.2-curl
+        - php7.2-dba
+        - php7.2-dev
+        - php7.2-enchant
+        - php7.2-fpm
+        - php7.2-gd
+        - php7.2-gmp
+        - php7.2-imap
+        - php7.2-interbase
+        - php7.2-intl
+        - php7.2-json
+        - php7.2-ldap
+        - php7.2-mbstring
+        - php7.2-mysql
+        - php7.2-odbc
+        - php7.2-opcache
+        - php7.2-pgsql
+        - php7.2-phpdbg
+        - php7.2-pspell
+        - php7.2-readline
+        - php7.2-recode
+        - php7.2-snmp
+        - php7.2-soap
+        - php7.2-sqlite3
+        - php7.2-sybase
+        - php7.2-tidy
+        - php7.2-xml
+        - php7.2-xmlrpc
+        - php7.2-xsl
+        - php7.2-zip
         - imagemagick
+    state: present
     update_cache: no
 
 - name: apt install mysql

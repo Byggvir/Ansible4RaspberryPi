@@ -1,0 +1,14 @@
+---
+#
+# Main ansible role task setup of a samba ad dc
+#
+# file: playbooks/roles/samba/tasks/main.yaml
+#
+# Thomas Arend
+# Date 2019-05-31
+#
+#
+
+- include_tasks: 01-samba.yaml
+
+...

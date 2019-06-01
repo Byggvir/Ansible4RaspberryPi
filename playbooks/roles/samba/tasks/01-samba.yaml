@@ -1,0 +1,23 @@
+---
+#
+# Main ansible role task setup of a samba ad dc
+#
+# file: playbooks/roles/samba/tasks/01-samba.yaml
+#
+# Thomas Arend
+# Date 2019-05-31
+#
+#
+
+- name: install samba ad dc
+  become: yes
+  apt:
+    name: 
+        - samba
+        - smbclient
+        - samba-common-bin
+        - winbind
+    state: present
+    update_cache: no
+
+...

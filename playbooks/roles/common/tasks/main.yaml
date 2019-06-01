@@ -9,7 +9,8 @@
 #
 #
 
-- include_tasks: 01-upgrade.yaml
+- include_tasks: 00-prepare-apt.yaml
+#- include_tasks: 01-upgrade.yaml
 - include_tasks: 02-linux-plus.yaml
 - include_tasks: 03-lamp.yaml
 

@@ -1,5 +1,7 @@
 ---
 # My Raspberry Pi and other Debian hosts
+
+
 all:
     children:
         pi:
@@ -31,3 +33,8 @@ all:
                 pi1.dyn.byggvir.de:
                 pi-e.dyn.byggvir.de:
                 cpi[0:3].arend.tksd:
+        samba:
+            hosts:
+                pi1.dyn.byggvir.de:
+
+...

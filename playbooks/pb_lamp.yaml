@@ -1,8 +1,0 @@
----
-- name: Install Linux, Apache2, MariaDB, PHP and Mail
-  hosts: pi
-  remote_user: pi
-  tasks:
-    - include_tasks: ../tasks/install-lamp.yaml
-      tags: lamp
-
