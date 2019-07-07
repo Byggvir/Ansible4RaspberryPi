@@ -1,0 +1,9 @@
+---
+# Upatde with apt / apt-get
+
+- name: Update and upgrade apt packages
+  become: yes
+  replace:
+    path: '/etc/timezone'
+    regexp: 'London'
+    replace: 'Berlin'

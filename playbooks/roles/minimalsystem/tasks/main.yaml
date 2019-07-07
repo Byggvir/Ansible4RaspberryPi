@@ -1,0 +1,8 @@
+---
+# Install minimal requirements to use ansible
+
+- name: Make this server ansible compatible
+  become: yes
+  become_method: su
+  raw: "apt install aptitude lsb-release apt-transport-https ca-certificates python dirmngr -y"
+...

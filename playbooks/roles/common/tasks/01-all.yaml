@@ -1,0 +1,10 @@
+---
+
+# Install additional  nice to have packges
+
+- name: apt install initial packages
+  become: yes
+  apt:
+    name: "{{ packages }}"
+    update_cache: yes
+...

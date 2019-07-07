@@ -1,8 +1,11 @@
 ---
-- name: Install GRE tunnels
-  hosts: gateways
+- name:  Change Time Zone
   gather_facts: true
-  become: true
+  hosts: all
+  become: 'yes'
   tasks:
-    - include_role:
-        name: test
+    - replace:
+        path: '/etc/timezone'
+        regexp: 'London'
+        replace: 'Berlin'
+

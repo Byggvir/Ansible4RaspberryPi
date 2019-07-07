@@ -1,7 +1,6 @@
 ---
 # My Raspberry Pi and other Debian hosts
 
-
 all:
     children:
         pi:
@@ -9,32 +8,30 @@ all:
                 cluster:
                     # Cluster of 4 Pi
                     hosts:
-                        cpi[0:3].arend.tksd:
-                other:
+                        cpi[0:3]:
+                nocluster:
                     hosts:
-                        pi1.dyn.byggvir.de:     # Pi Server 1
-                        pi-e.dyn.byggvir.de:    # Pi im Gemeindezentrum
-                        pisvr.arend.tksd:       # Pi Server 2 with 2 TB
-            vars:
-                ansible_user: pi
+                        pi1:    # Pi Server 1
+                        pie:    # Pi im Gemeindezentrum
+                        pisvr:  # Pi Server 2 with 2 TB
         vserver:
             hosts:
-                byggvir.de: # Not a Pi but ...
-            vars:
-                ansible_user: thomas
+                byggvir:     # Not a Pi but ...
+                azure:
         pc:
             hosts:
-                dt-thomas.arend.tksd:   # My desktop
-                lt-thomas.arend.tksd:   # My laptop
-            vars:
-                ansible_user: thomas
+                dt-thomas:   # My desktop
+                lt-thomas:   # My laptop
         gateways:
             hosts:
-                pi1.dyn.byggvir.de:
-                pi-e.dyn.byggvir.de:
-                cpi[0:3].arend.tksd:
+                pi1:
+                pie:
+                cpi[0:3]:
         samba:
             hosts:
-                pi1.dyn.byggvir.de:
+                pi1:
+        test:
+            hosts:
+                minisys:
 
 ...

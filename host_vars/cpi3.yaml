@@ -1,27 +1,29 @@
 ---
-sn_ffrl_IPv4: 172.16.20.102
+ansible_host: cpi3.arend.tksd
+ansible_user: pi
 
 gre:
   bb-a:
     tunnel:
-        remote: 192.168.2.42
+        remote: 192.168.2.40
         local:  '{{ ansible_default_ipv4.address }}'
         netmask: 255.255.255.254
         mtu: 1400
         ttl: 64
     dev: tun-bb-a
-    address: 10.0.200.5
-    daddress: 10.0.200.6
-    network: 10.0.20.0/24
+    address: 100.64.200.6
+    daddress: 100.64.200.5
+    network: 100.64.0.200.4/30
+
   bb-b:
     tunnel:
-        remote: 192.168.2.43
+        remote: 192.168.2.41
         local:  '{{ ansible_default_ipv4.address }}'
         netmask: 255.255.255.254
         mtu: 1400
         ttl: 64
     dev: tun-bb-b
-    address: 10.0.200.7
-    daddress: 10.0.200.8
-    network: 10.0.20.0/24
+    address: 100.64.200.12
+    daddress: 100.64.200.11
+    network: 100.64.200.12/30
 ...

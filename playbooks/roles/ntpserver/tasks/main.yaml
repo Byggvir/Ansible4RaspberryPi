@@ -1,0 +1,13 @@
+---
+
+# Install ntp-server
+
+- name: apt install initial packages
+  become: yes
+  apt:
+    name: 
+      - ntp
+      - ntp-doc
+      - ntpstat
+    update_cache: yes
+...

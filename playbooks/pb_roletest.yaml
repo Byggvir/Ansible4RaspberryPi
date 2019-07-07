@@ -1,19 +1,12 @@
 ---
-- name: Install common components
+
+- name: Install ntpserver
   hosts: all
   gather_facts: true
   become: true
   tasks:
     - include_role:
-        name: common
-
-- name: Install samba
-  hosts: samba
-  gather_facts: true
-  become: true
-  tasks:
-    - include_role:
-        name: samba
+        name: ntpserver
 
 
 ...

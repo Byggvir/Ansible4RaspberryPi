@@ -1,9 +1,6 @@
 ---
 # Update with apt / apt-get
 
-- name: Make this server ansible compatible
-  raw: "apt-get install aptitude lsb-release apt-transport-https ca-certificates python dirmngr -y"
-
 - name: Adding php key
   apt_key:
     id: B188E2B695BD4743

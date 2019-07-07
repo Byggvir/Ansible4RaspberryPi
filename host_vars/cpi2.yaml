@@ -1,5 +1,6 @@
 ---
-sn_ffrl_IPv4: 172.16.20.2
+ansible_host: cpi2.arend.tksd
+ansible_user: pi
 
 gre:
   bb-a:
@@ -10,9 +11,9 @@ gre:
         mtu: 1400
         ttl: 64
     dev: tun-bb-a
-    address: 10.0.200.4
-    daddress: 10.0.200.3
-    network: 10.0.20.0/24
+    address: 100.64.200.2
+    daddress: 100.64.200.1
+    network: 100.64.0.200.0/30
   bb-b:
     tunnel:
         remote: 192.168.2.41
@@ -21,7 +22,7 @@ gre:
         mtu: 1400
         ttl: 64
     dev: tun-bb-b
-    address: 10.0.200.8
-    daddress: 10.0.200.7
-    network: 10.0.20.0/24
+    address: 100.64.200.10
+    daddress: 100.64.200.9
+    network: 100.64.200.8/30
 ...
