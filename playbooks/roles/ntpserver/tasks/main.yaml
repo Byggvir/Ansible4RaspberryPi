@@ -1,13 +1,8 @@
 ---
+# Erstellt von: Thomas Arend
+# Erstellt am:  2019-06-23
 
-# Install ntp-server
-
-- name: apt install initial packages
-  become: yes
-  apt:
-    name: 
-      - ntp
-      - ntp-doc
-      - ntpstat
-    update_cache: yes
+- name: "Install ntp-server"
+  include_tasks: "tsk_ntp.yaml"
+  when: provider is defined and ntp_server[ntpprovider] is defined
 ...

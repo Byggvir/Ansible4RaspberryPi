@@ -1,0 +1,8 @@
+---
+- name: Install php7.4
+  hosts: pi
+  remote_user: pi
+  tasks:
+    - include_tasks: ../tasks/install-php.yaml
+      tags: lamp
+

@@ -1,0 +1,31 @@
+# virtualbox/tasks/main.yaml
+
+- name: Adding php key
+  apt_key:
+    url: "{{item }}"
+    state: present
+  loop:
+    - https://www.virtualbox.org/download/oracle_vbox_2016.asc
+    - https://www.virtualbox.org/download/oracle_vbox.asc
+    
+- name: Add virtualbox repo
+  become: "yes"
+  apt_repository: 
+    repo: deb http://download.virtualbox.org/virtualbox/debian buster contrib 
+    state: present
+    update_cache: no
+    
+
+- name: Update and upgrade apt packages
+  become: "yes"
+  apt:
+    upgrade: "yes"
+    update_cache: "yes"
+    cache_valid_time: 86400 # One day 
+
+- name: Install virtualbox
+  become: yes
+  apt:
+    name: 
+      - virtualbox-6.1
+    state: present 

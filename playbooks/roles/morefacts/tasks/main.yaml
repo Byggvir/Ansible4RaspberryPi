@@ -1,0 +1,35 @@
+---
+# Erstellt von: Thomas Arend
+# Erstellt am:  2019-08-18
+
+# Ab hier muss noch dein Code hinein
+
+- name: get public IPv4 address
+  command: wget -4 -O - http://yourip.byggvir.de/yourip.php
+  register: retPublicIPv4
+
+- name: get public IPv6 address
+  command: wget -6 -O - http://yourip.byggvir.de/yourip.php
+  register: retPublicIPv6
+
+- name: get public IPv4 address for home-pi
+  command: dig +short home.dyn.byggvir.de
+  register: retHomeIPv4
+
+- name: get public IPv4 address for home-pi
+  command: dig +short pi-e.dyn.byggvir.de
+  register: retEKiRIPv4
+
+- name: set IPv4 to facts
+  set_fact:
+    PublicIPv4: "{{ retPublicIPv4.stdout }}"
+    PublicIPv6: "{{ retPublicIPv6.stdout }}"
+    HomeIPv4: "{{ retHomeIPv4.stdout_lines[0] }}"
+    EKiRIPv4: "{{ retEKiRIPv4.stdout_lines[0] }}"
+
+- name: show IP
+  debug:
+    msg: "{{ item }}"
+  loop:
+    - "{{ HomeIPv4 }}"
+...

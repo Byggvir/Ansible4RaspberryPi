@@ -13,15 +13,15 @@ all:
                     hosts:
                         pi1:    # Pi Server 1
                         pie:    # Pi im Gemeindezentrum
-                        pisvr:  # Pi Server 2 with 2 TB
+#                        pisvr:  # Pi Server 2 with 2 TB
         vserver:
             hosts:
                 byggvir:     # Not a Pi but ...
-                azure:
+#                azure:
         pc:
             hosts:
-                dt-thomas:   # My desktop
-                lt-thomas:   # My laptop
+                tux-dt:   # My desktop
+                tux-lt:   # My laptop
         gateways:
             hosts:
                 pi1:
@@ -33,5 +33,9 @@ all:
         test:
             hosts:
                 minisys:
+                backbone:
+        vm:
+            hosts:
+                bw:
 
 ...

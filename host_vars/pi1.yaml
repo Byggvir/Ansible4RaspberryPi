@@ -2,12 +2,12 @@
 ansible_host: pi1.dyn.byggvir.de
 ansible_user: pi
 
-ntpprovider: t-online
+ntpprovider: "t-online"
 
 gre:
   ekir:
     tunnel:
-        remote: 93.214.140.215
+        remote: '{{ EKiRIPv4 }}'
         local:  '{{ ansible_default_ipv4.address }}'
         netmask: 255.255.255.254
         mtu: 1400
