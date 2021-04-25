@@ -1,0 +1,19 @@
+---
+# Erstellt von: Thomas Arend
+# Erstellt am:  2021-04-25
+
+# Ab hier muss noch dein Code hinein
+
+- name: Copy timezone file
+  copy:
+    src: "{{ item }}"
+    dest: "/etc/{{ item }}"
+    owner: root
+    group: 
+    mode: 0644
+  tags:
+    - timezone
+  loop: 
+    - timezone
+
+...

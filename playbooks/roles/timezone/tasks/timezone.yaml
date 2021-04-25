@@ -1,9 +1,10 @@
 ---
-# Upatde with apt / apt-get
+# Change timezone
 
-- name: Update and upgrade apt packages
+- name: Change time zone to Europe/Berlin 
   become: yes
   replace:
     path: '/etc/timezone'
     regexp: 'London'
     replace: 'Berlin'
+...
