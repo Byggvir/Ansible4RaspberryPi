@@ -7,7 +7,7 @@
     dest: /etc/ntp.conf
     regexp: '(^pool|^server) .*'
     state: absent
-  when: provider is defined
+  when: ntpprovider is defined
   notify:
     - restart ntp
 
@@ -15,8 +15,8 @@
   lineinfile:
     path: /etc/ntp.conf
     line: "server {{ item }} iburst"
-  loop: "{{ ntp_server[provider] | list }}"
-  when: provider is defined
+  loop: "{{ ntp_server[ntpprovider] | list }}"
+  when: ntpprovider is defined
   notify:
     - restart ntp
     
