@@ -1,0 +1,11 @@
+---
+# Erstellt von: Thomas Arend
+# Erstellt am:  2019-07-08
+
+- name: restart dhcpd
+  service:
+    name: isc-dhcp-server
+    state: restarted
+    enabled: yes
+  ignore_errors: yes
+...

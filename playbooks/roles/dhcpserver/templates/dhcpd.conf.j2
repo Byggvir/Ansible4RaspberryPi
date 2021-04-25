@@ -1,0 +1,42 @@
+##
+# dhcpd.conf Freifunk Voreifel template for Ansible
+# 
+# Thomas Arend
+# Date: 2019-04-16
+#
+#
+
+ddns-update-style none;
+option domain-name "ff";
+default-lease-time 300;
+max-lease-time 3600;
+log-facility local7;
+
+failover peer "{{ dhcp.name }}" {
+    {{ dhcp.type }};
+    address {{ dhcp.address }};
+    port {{ dhcp.port }};
+    peer address {{ dhcp.peer_address }};
+    peer port {{ dhcp.peer_port }};
+    max-response-delay {{ dhcp.max_response_delay }};
+    max-unacked-updates {{ dhcp.max_unacked_updates }};
+    {% if dhcp.type == "primary" %}
+    mclt {{ dhcp.mclt }};
+    split {{ dhcp.split }};
+    {% endif %}
+    load balance max seconds {{ dhcp.load_balance_max_seconds }};
+}
+
+omapi-port 7911;
+omapi-key omapi_key;
+
+key omapi_key {
+        algorithm hmac-sha256;
+        secret "/NNgH3AO/GlZ/PD+2X2K4Y6nOqnEH4uih0MNpsDgG+Q=";
+};
+
+{% for hooditem in hoods %}
+
+include "/etc/dhcp/dhcpd.conf.d/subnet-hood-{{ hoods[hooditem].namespace }}.conf" ;
+
+{% endfor %} 

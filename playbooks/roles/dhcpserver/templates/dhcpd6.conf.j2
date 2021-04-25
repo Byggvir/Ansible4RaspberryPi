@@ -1,0 +1,19 @@
+# Enable RFC 5007 support (same than for DHCPv4)
+allow leasequery;
+
+authoritative;
+
+default-lease-time 300;
+max-lease-time 600;
+
+{% for hooditem in hoods|list %}
+
+subnet6 {{ hoods[hooditem].mesh.IPv6.addr }}/64 {
+
+    range6 {{ hoods[hooditem].dhcp.range6 }} temporary;
+    option dhcp6.name-servers {{ hoods[hooditem].dhcp.DNS6 }};
+    option dhcp6.domain-search "{{ hoods[hooditem].namespace }}.ff";
+
+}
+
+{% endfor %}
