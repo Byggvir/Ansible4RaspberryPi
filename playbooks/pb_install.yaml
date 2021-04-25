@@ -8,13 +8,13 @@
     - include_role:
         name: "{{ inc_role }}"
       loop:
-        #- common
-        #- morefacts
-        #- ntpserver
-        #- samba
-        #- gre-tunnel
-        #- jitsi
+        - common
+        - morefacts
+        - ntpserver
+        - samba
+        - gre-tunnel
         - webserver
+        #- jitsi
         
       loop_control: 
         loop_var: inc_role
