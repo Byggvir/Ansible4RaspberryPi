@@ -1,0 +1,28 @@
+---
+# Erstellt von: Thomas Arend
+# Erstellt am:  2019-06-23
+
+- name: Delete servers and pool from ntp.conf
+  lineinfile:
+    dest: /etc/ntp.conf
+    regexp: '(^pool|^server) .*'
+    state: absent
+  when: provider is defined
+  notify:
+    - restart ntp
+
+- name: Insert server into /etc/ntp.conf
+  lineinfile:
+    path: /etc/ntp.conf
+    line: "server {{ item }} iburst"
+<<<<<<< HEAD
+  loop: "{{ ntp_server[provider] | list }}"
+=======
+  loop: "{{ ntp_server[ntpprovider] | list }}"
+>>>>>>> 791453a2a964d5291221960bcd6c583e1528d956
+  when: provider is defined
+  notify:
+    - restart ntp
+    
+- meta: flush_handlers
+...
