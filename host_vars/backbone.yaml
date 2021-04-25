@@ -1,0 +1,4 @@
+---
+ansible_host: backbone.example.com
+ansible_user: thomas
+...

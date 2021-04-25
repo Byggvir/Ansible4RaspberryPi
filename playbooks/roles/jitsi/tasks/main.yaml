@@ -1,0 +1,41 @@
+---
+# Erstellt von: Thomas Arend
+# Erstellt am:  2020-03-21
+
+# Ab hier muss noch dein Code hinein
+
+- name: Adding Jitsi GnuPG Key
+  apt_key:
+    url: https://download.jitsi.org/jitsi-key.gpg.key
+    state: present
+    
+- name: add default repo
+  apt_repository:
+    repo: "{{ item }}"
+    state: present
+  loop:
+    - "deb https://download.jitsi.org stable/"
+
+- name: Update and upgrade packages
+  apt:
+    upgrade: 'yes'
+    update_cache: 'yes'
+    cache_valid_time: 600 # One day 
+  ignore_errors: yes
+  
+- name: Preconfigure Videobridge
+  debconf:
+    name: jitsi-videobridge2
+    question: jitsi-videobridge/jvb-hostname
+    vtype: string
+    value: "{{ inventory_hostname_short }}.dyn.byggvir.de"
+   
+- name: Install common required packages
+  apt:
+    name: "{{ jitsipackage }}"
+    state: absent
+    update_cache: no
+    allow_unauthenticated: yes
+  register: aptupdates
+  
+...

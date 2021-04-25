@@ -1,17 +1,17 @@
 ---
-ansible_host: pi-e.dyn.byggvir.de
+ansible_host: nxwkn0dneoeep6ur.myfritz.net
 ansible_user: pi
 
 gre:
   ekir:
     tunnel:
-        remote: 79.210.199.170
+        remote: '{{ HomeIPv4 }}'
         local:  '{{ ansible_default_ipv4.address }}'
         netmask: 255.255.255.254
         mtu: 1400
         ttl: 64
     dev: gre-ekir
-    address: 100.0.100.2
-    daddress: 100.0.100.1
-    network: 100.0.100.0/30
+    address: 100.64.1.2
+    daddress: 100.64.1.1
+    network: 100.64.1.:0/30
 ...

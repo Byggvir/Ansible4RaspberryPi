@@ -1,0 +1,10 @@
+---
+# Update with apt / apt-get
+
+#- name: Adding php key
+  #apt_key:
+    #id: "{ item }"    
+    #keyserver: hkp://keys.gnupg.net
+  #ignore_errors: yes
+  #loop:  
+    #- A2F683C52980AECF

@@ -1,0 +1,21 @@
+---
+# Erstellt von: Thomas Arend
+# Erstellt am:  2019-09-04
+
+# Ab hier muss noch dein Code hinein
+
+- name: Reboot the server finally
+  shell: sleep 2 && shutdown -r now "Ansible updates triggered"
+  async: 1
+  poll: 0
+  ignore_errors: true
+
+- name: Wait port 22 to become open and contain "OpenSSH"
+  wait_for:
+    port: 22
+    host: '{{ (ansible_ssh_host|default(ansible_host))|default(inventory_hostname) }}'
+    search_regex: OpenSSH
+    delay: 10
+  vars:
+    ansible_connection: local
+...

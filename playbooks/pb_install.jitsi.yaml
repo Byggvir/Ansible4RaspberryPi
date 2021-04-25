@@ -1,0 +1,14 @@
+---
+- name: Install common components
+  hosts: all
+  gather_facts: true
+  become: yes
+  tasks:
+    - include_role:
+        name: "{{ inc_role }}"
+      loop:
+        - morefacts
+        - jitsi     
+      loop_control: 
+        loop_var: inc_role
+...

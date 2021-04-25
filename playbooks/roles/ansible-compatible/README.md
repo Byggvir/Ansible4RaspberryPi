@@ -1,38 +1,87 @@
-Role Name
-=========
+# Rolle: ansible-compatible/
 
-A brief description of the role goes here.
+Erstellt von **Thomas Arend** am *2019-07-20*
 
-Requirements
-------------
+# Kurzbeschreibung
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Mit dieser Rolle wird wir ein frisch installieres Debian ansible komptibel gemacht.
 
-Role Variables
---------------
+## Voraussetzungen
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+- auf dem Ziel-Host ist mindestens ein minimales Debian eingerichtet.
+- der Ziel-Host wurde mit einem User eingerichtet, dessen Username mit dem lokaten Usernamen identisch ist oder 
+- ansible_user für den Ziel-Host definiert,
+- das root-Passwort für den Zielhost ist bekannt
+- das Password des Remote User ist bekannt.
 
-Dependencies
-------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+## Ergebnis
 
-Example Playbook
-----------------
+- auf dem Ziel-Host ist die minimal erforderliche Software für ansible installiert.
+- der ssh-key des Remote user ist auf dem Ziel-Host in $HOME/.ssh/authorized_users abgelegt 
+- der user auf dem Zielhost ist in der Gruppe *sudo*.
+- der Nutzer kann sich mit ssh auf dem Zielhost anmelden,
+- der Nutzer erhält mit sudo ohne Passwort root-Rechte
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+## Unterverzeichnisse
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+Die Rolle verwendet folgende Unterverzeichnisse
 
-License
--------
+- tasks:        Tasks zum ansible-komptiblem Einrichten des minimalsystems
+- handlers:     keine
+- defaults:     default variables for the role.
+- vars:         zusätzlichen Nutzer
+- files:        public ssh-keys der User
+- templates:    keine
+- meta:         keine
 
-BSD
+### tasks
 
-Author Information
-------------------
+Die Rolle *ansible-compatible* führt Tasks aus, die wie folgt gruppiert sind:
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+- Installation zusätzlicher Software
+- Konfiguration, anpassen apt und der CD
+- Einrichten der Nutzer
+- Hinzufügen zur Gruppe sudo
+- anpassen der /etc/sudoers, so dass kein Password abgefragt wird.
+
+**Näheres** zu den *tasks* findest du **im README.md** im Verzeichnis *tasks*.
+
+### handlers
+
+Die Fehlerbehandlung wird durch Handler in *handlers* übernommen. 
+
+**Näheres** zu den *handlers* findest du **im README.md** im Verzeichnis *handlers*.
+
+### defaults / vars
+
+Die Rolle *ansible-compatible* nutzt folgende Variablen in *defaults* und / oder *vars*:
+
+Die Rolle *ansible-compatible* nutzt folgende Variablen in vars:
+
+**Näheres** zu den *defaults* und *variablen* findest du **im README.md** im Verzeichnis *defaults* / *handlers*.
+
+### templates
+
+Templates im *j2* werden durch Ansible anhand der Varibalen und des Programmcodes in den Templates modifiziert und als Dateien auf das Zielsystem kopiert.
+
+Die Rolle *ansible-compatible* nutzt folgende Templates in *templates*:
+
+- *keine*
+
+**Näheres** zu den *defaults* und *variablen* findest du **im README.md** im Verzeichnis *defaults* / *handlers*.
+
+### files
+
+Die Rolle *ansible-compatible* nutzt folgende Dateien in *files*:
+
+Public ssh-keys der Nutzer. Der Name der Datei muss mit dem Username identisch sein und endet auf _pub.
+
+**Näheres** zu den *Dateien* findest du **im README.md** im Verzeichnis *files*.
+
+### meta
+
+Die Rolle *ansible-compatible* nutzt folgende Meta-Daten:
+
+**Näheres** zu den *Meta-Daten* findest du **im README.md** im Verzeichnis *meta*.
+

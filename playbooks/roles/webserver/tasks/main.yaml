@@ -1,6 +1,9 @@
 ---
 # Test task
-- name: Empty
-  debug:
-    msg: "Test task started"
+#- name: Empty
+  #debug:
+    #msg: "Web Server installation started"
+
+- include_tasks: 03-lamp.yaml
+
 ...

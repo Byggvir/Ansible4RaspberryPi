@@ -1,0 +1,7 @@
+---
+ansible_host: tux-dt.arend.tksd
+ansible_user: thomas
+
+ntpprovider: home
+
+...

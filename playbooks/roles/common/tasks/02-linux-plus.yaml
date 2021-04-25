@@ -4,6 +4,7 @@
 
 - name: apt install initial packages
   become: yes
+  become_method: sudo
   apt:
     name:
         - aptitude
