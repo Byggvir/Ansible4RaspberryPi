@@ -1,0 +1,78 @@
+---
+# Erstellt von: Thomas Arend
+# Erstellt / überarbeitet:  2019-07-06
+
+- name: "Create ferm directory /etc/ferm"
+  file: 
+    path: "/etc/ferm"
+    state: directory
+    owner: root
+    group: adm
+    mode: 2750
+  tags:
+    - ferm
+- name: "Create ferm directory /etc/ferm/ferm.d"
+  file: 
+    path: "/etc/ferm/ferm.d"
+    state: directory
+    owner: root
+    group: adm
+    mode: 2750
+  tags:
+    - ferm
+
+- name: "Create ferm.conf in directory /etc/ferm"
+  copy:
+    src: "{{ item }}"
+    dest: "/etc/ferm/{{ item }}"
+    owner: root
+    group: adm
+    mode: 0644
+  tags:
+    - timezone
+  loop: 
+    - ferm.conf
+
+- name: "Create local.conf in directory /etc/ferm.d"
+  copy:
+    src: "{{ item }}"
+    dest: "/etc/ferm/ferm.d/{{ item }}"
+    owner: root
+    group: adm
+    mode: 0644
+  tags:
+    - timezone
+  loop: 
+    - local.conf
+
+- name: "Create firewall rules for bgp in ferm.d/bgb.conf"
+  template:
+    src: "ferm.conf.bgp.j2"
+    dest: "/etc/ferm/ferm.d/bgp.conf"
+    owner: root
+    group: adm
+    mode: 0644
+  when: ffrl is defined
+  tags:
+    - ferm
+
+# Da ferm neuerdings (04.09.2019) einen Installtionsfehler hat,
+# installieren wir ferm erst jetzt.
+
+- name: Install ferm
+  apt:
+    name: ferm
+    state: present
+    update_cache: no
+  register: aptupdates
+  tags:
+    - apt
+
+- name: Enable and restart firewall ferm (ferm.service)
+  service:
+    name: "ferm.service"
+    enabled: yes
+    state: restarted
+  tags: 
+    - ferm
+...
