@@ -1,0 +1,37 @@
+---
+# Erstellt von: Thomas Arend
+# Erstellt am:  2019-06-23
+# Geändert am:  2020-04-07
+
+ntp_server:
+  hetzner:
+    - "213.239.239.164"
+    - "213.239.239.165"
+    - "213.239.239.166"
+  strato:
+    - "ntp1.rz-ip.net"
+    - "ntp2.rz-ip.net"
+  tonline:
+    - "ntp1.t-online.de"
+  fritzbox:
+    - "192.168.178.1"
+  speedport:
+    - "192.168.2.1"
+  azure:
+    - "time.windows.com"
+  ewetel:
+    - "ntp0.ewetel.de"
+    - "ntp1.ewetel.de"
+  freenet:
+    - "ntp0.freenet.de"
+    - "ntp1.freenet.de"
+  web.de:
+    - "ntp.web.de"
+  arco:
+    - "de.pool.ntp.arcor-ip.net"
+  versatel:
+
+    - "time.versatel.de"
+    - "ntp1.versatel.net"
+    - "ntp2.versatel.net"
+...

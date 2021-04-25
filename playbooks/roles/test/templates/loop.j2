@@ -1,3 +1,4 @@
 {% for item in gre %}
+  {{ ansible_date_time.iso8601_basic }}
   {{ item }}
 {% endfor %} 

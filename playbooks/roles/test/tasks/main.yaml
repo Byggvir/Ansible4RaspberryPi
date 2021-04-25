@@ -1,3 +1,28 @@
-# supernode/tasks/main.yaml
+# - include_tasks: 02-j2-test-loop.yaml
 
-- include_tasks: 02-j2-test-loop.yaml
+- name: Copy logrotate config
+  copy: 
+    src: logrotate.conf
+    dest: /etc/logrotate.conf
+    owner: root
+    group: root
+    mode: 0644
+    
+- lineinfile:
+    path: /etc/logrotate.conf
+    regexp: 'rotate .*'
+    firstmatch: yes
+    state: absent
+    owner: root
+    group: root
+    mode: 0644
+    
+- lineinfile:
+    path: /etc/logrotate.conf
+    insertafter: '# keep 4 weeks worth of backlogs'
+    firstmatch: yes
+    state: present
+    line: 'rotate 1'
+    owner: root
+    group: root
+    mode: 0644
