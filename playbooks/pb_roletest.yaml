@@ -1,11 +1,17 @@
 ---
-# Playbook to reboot al servers
+# Playbook to tes a single role
 
-- name: reboot all
+- name: Install common components
   hosts: all
   gather_facts: true
-  become: true
+  become: yes
   tasks:
     - include_role:
-        name: reboot
+        name: "{{ inc_role }}"
+      loop:
+        - wlan
+        - reboot
+        
+      loop_control: 
+        loop_var: inc_role
 ...

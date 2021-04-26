@@ -1,0 +1,28 @@
+---
+# Erstellt von: Thomas Arend
+# Erstellt am:  2021-04-26
+
+# Ab hier muss noch dein Code hinein
+
+- name: "Create ferm directory /etc//wpa_supplicant"
+  file: 
+    path: "/etc/wpa_supplicant"
+    state: directory
+    owner: root
+    group: adm
+    mode: 0755
+  tags:
+    - wpa
+
+- name: "Define WLAN network wpa_supplicant.conf"
+  template:
+    src: "wpa_supplicant.conf.j2"
+    dest: "/etc/wpa_supplicant/wpa_supplicant.conf"
+    owner: root
+    group: adm
+    mode: 0644
+  when: ssid is defined
+  tags:
+    - wpa
+
+...

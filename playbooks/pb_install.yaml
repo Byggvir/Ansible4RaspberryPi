@@ -8,15 +8,16 @@
     - include_role:
         name: "{{ inc_role }}"
       loop:
-        #- common
-        #- morefacts
-        #- firewall
+        - common
+        - morefacts
+        - firewall
         - lightdm
-        #- timezone
-        #- ntpserver
-        #- samba
-        #- gre-tunnel
-        #- webserver
+        - timezone
+        - ntpserver
+        - samba
+        - gre-tunnel
+        - webserver
+        - reboot
         #- jitsi
         
       loop_control: 
