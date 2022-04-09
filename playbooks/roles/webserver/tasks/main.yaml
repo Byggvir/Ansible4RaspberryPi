@@ -4,6 +4,9 @@
   #debug:
     #msg: "Web Server installation started"
 
+- include_tasks: 01-php.yaml
 - include_tasks: 03-lamp.yaml
+- include_tasks: 03-mysql.yaml
+- include_tasks: 04-mail.yaml
 
 ...

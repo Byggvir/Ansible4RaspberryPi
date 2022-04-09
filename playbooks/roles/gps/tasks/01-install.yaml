@@ -1,0 +1,32 @@
+---
+#
+# Install GPS
+#
+
+- name: "Install packages for GPS"
+  apt:
+    name: 
+        - gpsd
+        - gpsd-tools
+        - gpsd-clients
+    update_cache: yes
+    state: present
+
+- name: "Change /etc/default/gpsd"
+  copy:
+    src: "{{ item }}"
+    dest: "/etc/default/{{ item }}"
+    owner: root
+    group: root
+    mode: 0644
+  loop: 
+    - gpsd
+
+- name: Enable and restart gpsd
+  service:
+    name: "gpsd.service"
+    enabled: yes
+    state: restarted
+  tags: 
+    - gpsd
+...

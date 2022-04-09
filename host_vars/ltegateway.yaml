@@ -1,0 +1,9 @@
+---
+ansible_host: 192.168.21.3 # gateway
+ansible_user: pi
+ntpprovider: home
+
+wlan :
+     ssid: Freifunk
+     key_mgmt: None
+... 

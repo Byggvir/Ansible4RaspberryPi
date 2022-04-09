@@ -1,0 +1,17 @@
+# Configure ip-forwarding
+
+- name: "Enable IP v4 forwarding" 
+  ansible.posix.sysctl:
+    name: net.ipv4.ip_forward
+    value: '1'
+    sysctl_set: yes
+    state: present
+    reload: yes
+
+- name: "Enable IP v6 forwarding" 
+  ansible.posix.sysctl:
+    name: net.ipv6.conf.all.forwarding
+    value: '1'
+    sysctl_set: yes
+    state: present
+    reload: yes

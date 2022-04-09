@@ -11,31 +11,13 @@ all:
                         cpi[0:3]:
                 nocluster:
                     hosts:
-                        pi1:    # Pi Server 1
-                        pie:    # Pi im Gemeindezentrum
-#                        pisvr:  # Pi Server 2 with 2 TB
+                        ltegateway:
+                        pi[1:2]:
+                        e[1:2]:    # Pi im Gemeindezentrum
         vserver:
             hosts:
                 byggvir:     # Not a Pi but ...
-#                azure:
-        pc:
-            hosts:
-                tux-dt:   # My desktop
-                tux-lt:   # My laptop
-        gateways:
-            hosts:
-                pi1:
-                pie:
-                cpi[0:3]:
         samba:
             hosts:
-                pi1:
-        test:
-            hosts:
-                minisys:
-                backbone:
-        vm:
-            hosts:
-                bw:
-
+                pi[1:2]:
 ...

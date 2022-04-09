@@ -8,18 +8,20 @@
     - include_role:
         name: "{{ inc_role }}"
       loop:
-        - common
-        - morefacts
-        - firewall
-        - lightdm
-        - timezone
+        #- ansible-compatible
+        #- common
+        #- morefacts
+        #- firewall
+        #- lightdm
+        #- timezone
+        #- realtimeclock
+        #- gps
         - ntpserver
-        - samba
-        - gre-tunnel
-        - webserver
-        - reboot
+        #- samba
+        #- webserver
+        #- reboot
         #- jitsi
-        
+        #- wlan
       loop_control: 
         loop_var: inc_role
 

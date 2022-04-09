@@ -1,0 +1,8 @@
+---
+# Erstellt von: Thomas Arend
+# Erstellt am:  2022-03-11
+
+# Ab hier muss noch dein Code hinein
+- name: "Allow IP forwarding"
+  include_tasks: ip-forward.yaml
+...

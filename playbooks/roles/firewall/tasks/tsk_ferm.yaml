@@ -11,6 +11,7 @@
     mode: 2750
   tags:
     - ferm
+    
 - name: "Create ferm directory /etc/ferm/ferm.d"
   file: 
     path: "/etc/ferm/ferm.d"
@@ -28,8 +29,6 @@
     owner: root
     group: adm
     mode: 0644
-  tags:
-    - timezone
   loop: 
     - ferm.conf
 

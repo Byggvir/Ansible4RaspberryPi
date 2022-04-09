@@ -1,6 +1,8 @@
 ---
-ansible_host: nxwkn0dneoeep6ur.myfritz.net
+ansible_host: 192.168.30.3
 ansible_user: pi
+
+ntpprovider: kirche
 
 gre:
   ekir:

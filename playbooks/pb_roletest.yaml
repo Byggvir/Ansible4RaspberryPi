@@ -9,8 +9,8 @@
     - include_role:
         name: "{{ inc_role }}"
       loop:
-        - wlan
-        - reboot
+        - ip-forward
+      #  - reboot
         
       loop_control: 
         loop_var: inc_role

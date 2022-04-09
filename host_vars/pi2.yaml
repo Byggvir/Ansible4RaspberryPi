@@ -1,0 +1,9 @@
+---
+ansible_host: 192.168.20.2
+ansible_user: pi
+
+rtc: ds3231
+
+provider: "telekom"
+ntpprovider: "home"
+...

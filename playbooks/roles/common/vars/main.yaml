@@ -79,7 +79,8 @@ packages :
     - fonts-liberation2
     - fortune-mod
     - fortunes
-    - gcc-7
+    - gcc
+    - gcc-10
     - gdb
     - geany
     - git
@@ -135,7 +136,6 @@ packages :
     - lame
     - less
     - letsencrypt
-    - libapache2-mod-gnutls
     - libapache2-mod-php8.0
     - libapache2-mod-proxy-uwsgi
     - libreoffice-help-de
@@ -149,7 +149,7 @@ packages :
     - logrotate
     - lsb-base
     - lsb-release
-    - lua5.1
+    - lua5.4
     - luajit
     - lxde
     - lxtask
@@ -176,7 +176,6 @@ packages :
     - mp3splt
     - mp3val
     - mp3wrap
-    - multiarch-support
     - mythes-de
     - nano
     - ncdu
@@ -195,7 +194,6 @@ packages :
     - openjdk-11-jdk
     - parted
     - passwd
-    - paxctld
     - perl-base
     - php-apcu
     - php8.0
@@ -237,6 +235,7 @@ packages :
     - tar
     - tasksel
     - tasksel-data
+    - tcpdump
     - timidity
     - traceroute
     - tree

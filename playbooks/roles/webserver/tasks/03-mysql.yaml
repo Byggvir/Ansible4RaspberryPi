@@ -1,0 +1,13 @@
+---
+# Upatde with apt / apt-get
+  
+- name: apt install mysql
+  become: yes
+  become_method: sudo
+  apt:
+    name: 
+        - mariadb-common
+        - mariadb-server
+        - mariadb-client
+    update_cache: yes
+...

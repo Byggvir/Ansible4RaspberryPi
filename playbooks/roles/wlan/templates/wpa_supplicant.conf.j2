@@ -3,6 +3,7 @@ update_config=1
 country=DE
 
 network={
-        ssid="{{ ssid }}"
-        key_mgmt=NONE
+        ssid="{{ wlan.ssid }}"
+        key_mgmt="{{wlan.key_mgnt}}
+        psk="{{wlan.psk}}"
 }

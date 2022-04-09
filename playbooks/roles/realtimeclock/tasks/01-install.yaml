@@ -1,0 +1,59 @@
+---
+#
+# Install GPS
+#
+
+- name: "Install packages for RealTimeClock"
+  apt:
+    name: 
+        - i2c-tools
+    update_cache: yes
+    state: present
+
+- name: "Enable I2C ARM"
+  ansible.builtin.lineinfile:
+    path: /etc/hosts
+    regexp: '.*dtparam=i2c_arm=.*'
+    line: 'dtparam=i2c_arm=on'
+    owner: root
+    group: root
+    mode: '0644'
+    
+- name: "Add RTC to /boot/config.txt"
+  community.general.ini_file:
+    path: /boot/config.txt
+    section: "all"
+    option: "dtoverlay"
+    value: "i2c-rtc,{{ rtc }}"
+    mode: '0644'
+    backup: no
+    no_extra_spaces: yes
+    
+- name: Add modules 
+  template:
+    src: "i2c.conf.j2"
+    dest: "/etc/modules-load.d/i2c.conf"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Load modules via modprobe
+  community.general.modprobe:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "i2c-bcm2708"
+    - "i2c-dev"
+#    - "rtc-{{ rtc }}"
+
+- name: Activate device
+  ansible.builtin.command: 
+    cmd: "echo {{ rtc }} 0x68 > /sys/class/i2c-adapter/i2c-1/new_device"
+    creates: /sys/class/i2c-adapter/i2c-1/device/i2c-1/1-0068/
+  
+- name: "Disable fake-hwclock.service"
+  service:
+    name: "fake-hwclock.service"
+    enabled: no
+    state: stopped
+...

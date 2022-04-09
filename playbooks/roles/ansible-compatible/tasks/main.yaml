@@ -8,8 +8,8 @@
 
 - name: "Install server stage 01 - make server ansible compatible"
   include_tasks: tsk_stage-01.yaml
-- name: "Get apt keys"
-  include_tasks: 00-get-apt-keys.yaml
+#- name: "Get apt keys"
+#  include_tasks: 00-get-apt-keys.yaml
 
 # After these steps we have a minimal system which can be installed with ansible from the ansible_user
 ...

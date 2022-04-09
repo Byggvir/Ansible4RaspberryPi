@@ -2,6 +2,14 @@
 # Erstellt von: Thomas Arend
 # Erstellt am:  2019-06-23
 
+- name: "Install packages for NTP"
+  apt:
+    name: 
+        - ntp
+        - ntpstat        
+    update_cache: yes
+    state: present
+    
 - name: Delete servers and pool from ntp.conf
   lineinfile:
     dest: /etc/ntp.conf

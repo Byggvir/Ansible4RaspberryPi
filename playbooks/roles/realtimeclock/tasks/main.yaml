@@ -1,0 +1,5 @@
+# realtimeclock/tasks/main.yaml
+
+- name: Install I2C and realtimeclock
+  include_tasks: 01-install.yaml
+  when: rtc is defined

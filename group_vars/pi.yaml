@@ -1,4 +1,5 @@
 ---
+ansible_ssh_private_key_file: ~/.ssh/14Anew
 ansible_user: pi
-
+debian: bullseye
 ...

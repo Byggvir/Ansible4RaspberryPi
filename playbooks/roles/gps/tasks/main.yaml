@@ -1,0 +1,6 @@
+---
+# gps/tasks/main.yaml
+
+- include_tasks: 01-install.yaml
+
+...

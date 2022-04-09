@@ -22,6 +22,9 @@ ntp_server:
   strato:
     - "ntp1.rz-ip.net"
     - "ntp2.rz-ip.net"
+    - "ntps1-0.eecsit.tu-berlin.de" 
+    - "ntps1-1.eecsit.tu-berlin.de"
+    - "time.fu-berlin.de" 
   tonline:
     - "ntp1.t-online.de"
   fritzbox:

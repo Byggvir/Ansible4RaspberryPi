@@ -2,23 +2,24 @@
 # Update with apt / apt-get
 
 
-- name: Adding keys
-  apt_key:
-    id: "{{ item }}"    
-    keyserver: hkp://keyserver.ubuntu.com
-    state: present
-  loop:  
-    - 379CE192D401AB61
-    - C6ABDCF64DB9A0B2
+- name: Download key for sury.org PHP packages
+  get_url:
+    url: https://packages.sury.org/php/apt.gpg
+    dest: /etc/apt/trusted.gpg.d/php.gpg
 
 - name: Remove php stretch repo
   apt_repository: 
     repo: 'deb https://packages.sury.org/php/ stretch main' 
     state: absent
 
-- name: Add php buster repo
+- name: Remove php buster repo
   apt_repository: 
     repo: 'deb https://packages.sury.org/php/ buster main' 
+    state: absent
+
+- name: Add php bullseye repo
+  apt_repository: 
+    repo: 'deb https://packages.sury.org/php/ {{ debian }} main' 
     state: present
     
 - name: Update and upgrade apt packages

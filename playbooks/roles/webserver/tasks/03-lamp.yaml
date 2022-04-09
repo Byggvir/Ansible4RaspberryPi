@@ -1,91 +1,6 @@
 ---
 # Upatde with apt / apt-get
 
-- name: apt remove old php
-  become: yes
-  become_method: sudo
-  apt:
-    name: 
-        - libapache2-mod-php{{ item }}
-        - php{{ item }}
-        - php{{ item }}-bcmath
-        - php{{ item }}-bcmath-dbgsym
-        - php{{ item }}-bz2
-        - php{{ item }}-bz2-dbgsym
-        - php{{ item }}-cgi
-        - php{{ item }}-cgi-dbgsym
-        - php{{ item }}-cli
-        - php{{ item }}-cli-dbgsym
-        - php{{ item }}-common
-        - php{{ item }}-common-dbgsym
-        - php{{ item }}-curl
-        - php{{ item }}-curl-dbgsym
-        - php{{ item }}-dba
-        - php{{ item }}-dba-dbgsym
-        - php{{ item }}-dev
-        - php{{ item }}-enchant
-        - php{{ item }}-enchant-dbgsym
-        - php{{ item }}-fpm
-        - php{{ item }}-fpm-dbgsym
-        - php{{ item }}-gd
-        - php{{ item }}-gd-dbgsym
-        - php{{ item }}-gmp
-        - php{{ item }}-gmp-dbgsym
-        - php{{ item }}-imap
-        - php{{ item }}-imap-dbgsym
-        - php{{ item }}-interbase
-        - php{{ item }}-interbase-dbgsym
-        - php{{ item }}-intl
-        - php{{ item }}-intl-dbgsym
-        - php{{ item }}-json
-        - php{{ item }}-json-dbgsym
-        - php{{ item }}-ldap
-        - php{{ item }}-ldap-dbgsym
-        - php{{ item }}-mbstring
-        - php{{ item }}-mbstring-dbgsym
-        - php{{ item }}-mcrypt
-        - php{{ item }}-mcrypt-dbgsym
-        - php{{ item }}-mysql
-        - php{{ item }}-mysql-dbgsym
-        - php{{ item }}-odbc
-        - php{{ item }}-odbc-dbgsym
-        - php{{ item }}-opcache
-        - php{{ item }}-opcache-dbgsym
-        - php{{ item }}-pgsql
-        - php{{ item }}-pgsql-dbgsym
-        - php{{ item }}-phpdbg
-        - php{{ item }}-phpdbg-dbgsym
-        - php{{ item }}-pspell
-        - php{{ item }}-pspell-dbgsym
-        - php{{ item }}-readline
-        - php{{ item }}-readline-dbgsym
-        #- php{{ item }}-recode
-        #- php{{ item }}-recode-dbgsym
-        - php{{ item }}-snmp
-        - php{{ item }}-snmp-dbgsym
-        - php{{ item }}-soap
-        - php{{ item }}-soap-dbgsym
-        - php{{ item }}-sqlite3
-        - php{{ item }}-sqlite3-dbgsym
-        - php{{ item }}-sybase
-        - php{{ item }}-sybase-dbgsym
-        - php{{ item }}-tidy
-        - php{{ item }}-tidy-dbgsym
-        - php{{ item }}-xml
-        - php{{ item }}-xml-dbgsym
-        - php{{ item }}-xmlrpc
-        - php{{ item }}-xmlrpc-dbgsym
-        - php{{ item }}-xsl
-        - php{{ item }}-zip
-        - php{{ item }}-zip-dbgsym
-    state: absent
-    update_cache: yes
-  loop:
-    - 7.1
-    - 7.2
-    - 7.3
-    - 7.4
-    - 5.6
     
 - name: apt install apache2 and php 8.0
   become: yes
@@ -95,42 +10,6 @@
         - apache2-utils
         - libapache2-mod-php{{ item }}
         - libapache2-mod-proxy-uwsgi
-        - php{{ item }}
-        - php{{ item }}-bcmath
-        - php{{ item }}-bz2
-        - php{{ item }}-cgi
-        - php{{ item }}-cli
-        - php{{ item }}-common
-        - php{{ item }}-curl
-        - php{{ item }}-dba
-        - php{{ item }}-dev
-        - php{{ item }}-enchant
-        - php{{ item }}-fpm
-        - php{{ item }}-gd
-        - php{{ item }}-gmp
-        - php{{ item }}-imap
-        - php{{ item }}-interbase
-        - php{{ item }}-intl
-        #- php{{ item }}-json
-        - php{{ item }}-ldap
-        - php{{ item }}-mbstring
-        - php{{ item }}-mysql
-        - php{{ item }}-odbc
-        - php{{ item }}-opcache
-        - php{{ item }}-pgsql
-        - php{{ item }}-phpdbg
-        - php{{ item }}-pspell
-        - php{{ item }}-readline
-        #- php{{ item }}-recode
-        - php{{ item }}-snmp
-        - php{{ item }}-soap
-        - php{{ item }}-sqlite3
-        - php{{ item }}-sybase
-        - php{{ item }}-tidy
-        - php{{ item }}-xml
-        - php{{ item }}-xmlrpc
-        - php{{ item }}-xsl
-        - php{{ item }}-zip
         - imagemagick
     state: present
     update_cache: yes
@@ -158,24 +37,9 @@
 - name: enable apache2 modules
   raw: sudo a2enmod ssl socache*
 
-- name: disable apache2 modules
-  raw: sudo a2dismod gnutls
+#- name: disable apache2 modules
+  #raw: sudo a2dismod gnutls
   
-- name: apt install mysql
-  become: yes
-  become_method: sudo
-  apt:
-    name: 
-        - mariadb-server
-    update_cache: yes
-     
-- name: apt install mysql
-  become: yes
-  apt:
-    name: 
-        - mariadb-server
-    update_cache: no
-
 - name: apt install dns
   become: yes
   become_method: sudo
@@ -187,23 +51,4 @@
         - certbot
     update_cache: yes
 
-- name: apt install mail
-  become: yes
-  become_method: sudo
-  apt:
-    name: 
-        - dovecot-core
-        - dovecot-pop3d
-        - dovecot-antispam
-        - dovecot-managesieved
-        - dovecot-sieve
-        - dovecot-mysql
-        - dovecot-imapd
-        - dovecot-lmtpd
-        - postfix
-        - postfix-mysql
-        - redis-server
-        - cyrus-sasl2-doc
-        - libsasl2-modules
-    update_cache: yes
 ...
