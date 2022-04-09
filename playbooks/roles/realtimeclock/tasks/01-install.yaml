@@ -12,7 +12,7 @@
 
 - name: "Enable I2C ARM"
   ansible.builtin.lineinfile:
-    path: /etc/hosts
+    path: /boot/config.txt
     regexp: '.*dtparam=i2c_arm=.*'
     line: 'dtparam=i2c_arm=on'
     owner: root
