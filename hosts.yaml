@@ -1,5 +1,5 @@
 ---
-# My Raspberry Pi and other Debian hosts
+# My Raspberry Pis
 
 all:
     children:
@@ -11,12 +11,9 @@ all:
                         cpi[0:3]:
                 nocluster:
                     hosts:
-                        ltegateway:
+                        gateway:
                         pi[1:2]:
                         e[1:2]:    # Pi im Gemeindezentrum
-        vserver:
-            hosts:
-                byggvir:     # Not a Pi but ...
         samba:
             hosts:
                 pi[1:2]:

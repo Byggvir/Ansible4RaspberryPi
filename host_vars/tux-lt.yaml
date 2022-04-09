@@ -1,7 +1,0 @@
----
-ansible_host: 192.168.20.51
-ansible_user: thomas
-
-ntpprovider: home
-
-...
